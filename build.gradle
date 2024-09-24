@@ -3,7 +3,7 @@ plugins {
     id "maven-publish"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 compileJava.options.encoding = "UTF-8"
 
 archivesBaseName = project.maven_name
@@ -12,6 +12,7 @@ version = project.maven_version
 
 repositories {
     mavenCentral()
+    maven {url = "https://repo.papermc.io/repository/maven-public/"}
     ivy {
         url "https://cdn.getbukkit.org/spigot"
         patternLayout {
@@ -24,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly "spigot:1.8.8-R0.1-SNAPSHOT"
+    compileOnly "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT"
 }
 
 jar {

@@ -163,7 +163,7 @@ public class PluginUtils {
                 try {
                     thread.interrupt();
                     thread.join(2000);
-                    if (thread.isAlive()) thread.stop();
+                    if (thread.isAlive()) thread.interrupt();
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
