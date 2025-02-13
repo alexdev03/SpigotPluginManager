@@ -22,9 +22,12 @@ public class PaperSupport {
         PluginRemapper pluginRemapper = PluginInitializerManager.instance().pluginRemapper;
         pluginRemapper.loadingPlugins();
         Path path = pluginRemapper.rewritePlugin(targetFile.toPath());
-        targetFile.delete();
-        Files.move(path, targetFile.toPath());
-        pluginRemapper.save(true);
+        if(!path.equals(targetFile.toPath())) {
+            targetFile.delete();
+            Files.move(path, targetFile.toPath());
+            pluginRemapper.save(true);
+        }
+
 
         Class<?> RuntimePluginEntrypointHandler = Class.forName("io.papermc.paper.plugin.manager.RuntimePluginEntrypointHandler");
 
